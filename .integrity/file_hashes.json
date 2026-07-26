@@ -1,0 +1,26 @@
+{
+  "repo": "spacex-ground-network",
+  "algorithm": "sha256",
+  "file_count": 19,
+  "hashes": {
+    "README.md": "99fa9702e7cc9883a8eaaa5958158af8348b76d082d2820ec21242db46ceaa52",
+    "EASTER_EGGS.md": "0c4fc58a6163b54497fc8327ec77f4293330eea4ba636e30db202836bd450900",
+    ".gitignore": "bdf5823fb39358309d859824c0bfe95e917594bd370372743c15fe08f55f98b2",
+    "AKOS.md": "eae48200ee1bf2ec3fe2f267668b1dd09bac66f3bd2e01420e5787413f247a07",
+    "AGENTS.md": "dfd8c0adcc1b0c4252b4230076b27833fb1d06f357401092aac00b7664e5c44b",
+    "HELIX_STRAND.md": "b5257bc4ecaf64b30aef8ee53adb2c0eb9e197fd3d3e67270b1d7ba7ab6064e0",
+    "mastermind_sidecar.py": "8e2828d9e100e5ad83f1cdcd5b31fdff85966d86790eada2adae66034c09abaf",
+    "SECURITY_AND_FLEET_OPS.md": "26141c0f07d95847d679de423ddb7bdee6f3e319d204383c89a58d6d3bb610c7",
+    "ISSUE_CONTRACT.md": "e12f20b5d4b5756445fb07247bf5e07f95ecf83966272144feca0b01ec2a189b",
+    "HELIX.md": "8941f7995736c65ef5d392b7e36aa966c7119585922b97e521c3bc3f89eed079",
+    "tests/test_core.py": "bfd3323ff8c1692fdf9b8d6ab0503c84ced62fd3d93a6265c22ed956cfcd3653",
+    "tests/test_ground.py": "1f727a09f33e3c5da2d1fa787ee2151fd5729dbb41b184cd9486fdaf7be54e17",
+    "tests/test_ground_net.py": "017c6e0aae866d88330c49c2d11607e2e03662a3f18ce7dd5b592daffd25dea8",
+    ".shadow/config.json": "3cdb36ecb4500a6e60aa647fd79a65efb47b202177bb7ff063abcacd99ebe196",
+    ".github/workflows/ci.yml": "393542f8109cac2611d6ab41b8b062e6cc8be46894379568f15c0b7e2c1a639f",
+    "src/ground_net.py": "e6bdd5a05c969ffe48d1fe9daf082c23ba4e7e536c3c3456fd1aa2736c52c01a",
+    "src/omega/network_manager.py": "148a5b7980bc011bac88333f9bb3514485c8d53b43a55e39cc7700b445ed89fa",
+    "src/omega/predictive_handoff.py": "97b3c4db80218a5149740c8e8d503fbfabf0e38f160a6205ca476be22c503e76",
+    "src/alpha/antenna_tracker.py": "e874b61a6e61e8fbf4aabc8124b980999c99e0ec2f4f900d99bdc63d1ec5b3b5"
+  }
+}
