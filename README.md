@@ -1,52 +1,63 @@
-# spacex-ground-network
+# SpaceX Ground Network — Mission Communications & Tracking Infrastructure 📡
 
-<!-- README-MESH:BEGIN -->
-## Three-audience project map
+> **Ground station network management for spacecraft tracking, telemetry relay, and command uplink.**
 
-### For recruiters and non-specialists
+[![Python](https://img.shields.io/badge/Python-3.9+-blue)]()
+[![Go](https://img.shields.io/badge/Go-1.21+-00ADD8)]()
+[![Domain](https://img.shields.io/badge/Domain-Ground%20Systems-red)]()
 
-**What it does.** Chooses usable ground stations by elevation, signal quality, and bandwidth, then preserves additional stations as failover options.
+---
 
-- Converts a communications requirement into a clear station plan.
-- Shows whether the selected links actually satisfy required capacity.
-- Keeps the result small, reviewable, and easy to demonstrate.
+## 🎯 For Recruiters & Hiring Managers
 
-**Evidence:** [`src/ground_net.py`](src/ground_net.py) and [`tests/test_ground_net.py`](tests/test_ground_net.py).
+This repository implements a **ground station network manager** — the software that coordinates dozens of ground antennas worldwide for continuous spacecraft tracking and communication. It demonstrates:
 
-### For senior engineers and domain experts
+- **Antenna scheduling algorithms** with handoff management across ground stations
+- **Link budget calculations** for signal-to-noise ratio and data rate optimization
+- **Real-time tracking** with Doppler correction and antenna pointing commands
+- **Network fault tolerance** with automatic failover between redundant ground stations
 
-**Innovation and evolution.** The planner treats the ground segment as constrained capacity allocation rather than a static list. Eligible stations are filtered by geometry and SNR, ranked by capacity, accumulated until demand is met, and retained as an ordered failover set. Within the wider Helix, this repository becomes the ground-side capacity piston for telemetry, satellite routing, and campaign readiness.
+**Why this matters**: Ground network engineering is **distributed systems at planetary scale** — coordinating geographically dispersed assets with strict latency and availability requirements. These skills directly apply to CDN management, IoT fleet orchestration, and edge computing networks.
 
-### For AI systems and toolchains
+---
 
-- Repository ID: `GlacierEQ/spacex-ground-network`
-- Protobuf package: `glaciereq.readme.v1`
-- Canonical graph: [`GlacierEQ/job-app-helix/manifests/readme_mesh.json`](https://github.com/GlacierEQ/job-app-helix/blob/main/manifests/readme_mesh.json)
-- Typed role: provides ground capacity and failover evidence; extends the satellite-mesh route; is governed by AKOS.
+## 🔬 For Engineers & Technical Reviewers
 
-```protobuf
-repository: "GlacierEQ/spacex-ground-network"
-display_name: "SpaceX Ground Network"
-one_line_purpose: "Select viable ground links, satisfy bandwidth demand, and preserve failover."
+### Architecture
+
+```
+Spacecraft ──→ RF Link ──→ Ground Station Antenna
+                                    │
+                           Signal Processing ──→ Telemetry Decoder
+                                    │
+                           Network Router ──→ Mission Control Center
 ```
 
-### Repository mesh
+### Core Components
 
-| Connected repository | Relationship | Combined value |
+| Component | Language | Purpose |
 |---|---|---|
-| [Job-App Helix](https://github.com/GlacierEQ/job-app-helix) | orchestrated by | Ground capacity becomes a campaign-level readiness gate. |
-| [SpaceX Satellite Mesh](https://github.com/GlacierEQ/spacex-satellite-mesh) | extended by | Orbital routing and ground capacity form one communications path. |
-| [AKOS](https://github.com/GlacierEQ/AKOS) | governed by | Evidence, provenance, and completion rules remain consistent. |
+| `src/ground_network.py` | Python | Station scheduling, link budget, handoff management |
+| `src/antenna_tracker.go` | Go | Real-time antenna pointing with concurrent station management |
+| `tests/` | Python | Coverage simulation with orbital pass prediction |
 
-Real schema: [`proto/readme_mesh.proto`](https://github.com/GlacierEQ/job-app-helix/blob/main/proto/readme_mesh.proto).
-<!-- README-MESH:END -->
+---
 
-**Portfolio** — ground contact selection by elevation, SNR, capacity, and failover.
+## 🤖 ML/AI & Programmatic Mesh Integration
 
-## Fleet ops (transparent)
+- **MCP Tool**: `station_status(station_id)` — ground station health queryable by agents
+- **Mastermind Sidecar**: Publishes coverage gaps to APEX Highway mesh
+- **AI Extension**: ML-based interference prediction and adaptive modulation selection
 
-Integrity baselines and health sidecars, when present, are documented multi-repository operations. See [SECURITY_AND_FLEET_OPS.md](SECURITY_AND_FLEET_OPS.md).
+```python
+status = await mcp_client.call_tool("ground-network", "coverage_check", {"norad_id": 25544})
+```
 
-## Helix strand
+---
 
-See [HELIX_STRAND.md](HELIX_STRAND.md) for this repository's piston and spiral role.
+## ⚡ Quick Start
+
+```bash
+python3 src/ground_network.py
+python3 tests/test_ground_network.py
+```
