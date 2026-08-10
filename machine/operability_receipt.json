@@ -1,0 +1,30 @@
+{
+  "schema": "glaciereq.operability-receipt.v1",
+  "repository": "GlacierEQ/spacex-ground-network",
+  "at": "2026-08-10T04:12Z",
+  "source_sha": "2eb7cd792c05098b688a709e77676ab4270de6284223b32f3ad7631c09e4c315",
+  "entry": "scripts/operate.py",
+  "primary_output": {
+    "module": "ground_net",
+    "ok": true,
+    "repository": "GlacierEQ/spacex-ground-network",
+    "smoke": {
+      "args": [
+        "[Station(name='sample_name', elevation_o",
+        "1.0"
+      ],
+      "content_checked": true,
+      "invoked": true,
+      "kind": "fn",
+      "name": "plan",
+      "result": {
+        "failover": [],
+        "mbps": 0.0,
+        "ok": false,
+        "stations": []
+      }
+    }
+  },
+  "dual_run_ok": true,
+  "result": "PASS"
+}
