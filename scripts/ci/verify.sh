@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+python -m pip install --disable-pip-version-check ruff pytest
+[[ -f requirements.txt ]] && python -m pip install -r requirements.txt
+[[ -f requirements-dev.txt ]] && python -m pip install -r requirements-dev.txt
+
 python -m ruff check --select E9,F63,F7,F82 .
 python -m compileall -q src tests
 python -m pytest -x -q
