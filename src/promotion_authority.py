@@ -13,6 +13,7 @@ import hmac
 import json
 import time
 from dataclasses import dataclass
+from pathlib import Path
 
 
 # Reference local operator secret (NOT production). Documented for re-verification.
@@ -80,7 +81,7 @@ class PromotionAuthority:
 
 def verify_bound_grant(
     grant_dict: dict,
-    proof_receipt_path: str | bytes | "Path",
+    proof_receipt_path: str | bytes | Path,
     *,
     secret: bytes = LOCAL_OPERATOR_SECRET,
     now: float | None = None,
@@ -93,8 +94,7 @@ def verify_bound_grant(
       3) HMAC verify with operator secret
     Fail-closed on any mismatch.
     """
-    from pathlib import Path as _P
-    path = _P(proof_receipt_path)
+    path = Path(proof_receipt_path)
     if not path.is_file():
         return False, "PROOF_RECEIPT_MISSING"
     proof_bytes = path.read_bytes()

@@ -5,24 +5,24 @@ Cross-domain health monitoring and coordination.
 
 import hashlib
 import json
-import os
 import time
 from pathlib import Path
 from typing import Dict, Any
 
+
 class MastermindSidecar:
     """Lightweight sidecar for cross-domain health reporting."""
-    
+
     def __init__(self, repo_name: str = "spacex-ground-network"):
         self.repo_name = repo_name
         self.start_time = time.time()
         self.health_cache: Dict[str, Any] = {}
-        self._modules = [antenna_tracker, network_manager, predictive_handoff]
-    
+        self._modules = ["antenna_tracker", "network_manager", "predictive_handoff"]
+
     def file_hash(self, path: str) -> str:
         """Compute SHA-256 hash of file contents."""
         return hashlib.sha256(Path(path).read_bytes()).hexdigest()
-    
+
     def verify_integrity(self) -> Dict[str, bool]:
         """Verify SHA-256 integrity of all source files."""
         results = {}
@@ -32,7 +32,7 @@ class MastermindSidecar:
                 if path.exists():
                     results[f"{layer}/{module}.py"] = True
         return results
-    
+
     def health_report(self) -> Dict[str, Any]:
         """Generate health report for mastermind aggregation."""
         uptime = time.time() - self.start_time
@@ -41,13 +41,14 @@ class MastermindSidecar:
             "uptime_seconds": uptime,
             "modules": self._modules,
             "integrity": self.verify_integrity(),
-            "status": "healthy"
+            "status": "healthy",
         }
-    
+
     def status(self) -> str:
         """Print status summary."""
         report = self.health_report()
         return json.dumps(report, indent=2)
+
 
 if __name__ == "__main__":
     sidecar = MastermindSidecar()
