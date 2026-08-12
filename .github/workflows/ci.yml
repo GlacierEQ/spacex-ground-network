@@ -1,16 +1,57 @@
-name: CI
+name: Native functional verification
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main]
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
-  ci:
-    uses: GlacierEQ/public-actions-runner-host/.github/workflows/reusable-quick-ci.yml@a6085dae73bb80e91b845fd4a0d2f73a9c6b985a
-    with:
-      repo_name: ${{ github.event.repository.name }}
-      language: python
-      verify_script: scripts/ci/verify.sh
-      upload_artifacts: true
+  python:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e . pytest
+      - run: python -m compileall -q src tests
+      - run: pytest -q
+      - run: ground-network demo > /tmp/ground-network.json
+      - run: python -c 'import json; d=json.load(open("/tmp/ground-network.json")); assert d["schema"] == "glaciereq.ground-network-plan.v1"; assert d["operational_authority"] is False'
+
+  go:
+    name: Go native network kernel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - run: go vet ./...
+      - run: go test -race ./...
+      - run: go build -o /tmp/groundnet ./cmd/groundnet
+      - run: /tmp/groundnet > /tmp/groundnet.json
+      - run: python3 -c 'import json; d=json.load(open("/tmp/groundnet.json")); assert d["ok"] is True; assert d["operational_authority"] is False'
+
+  required-functional-proof:
+    if: always()
+    needs: [python, go]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require Python and Go behavior
+        env:
+          PYTHON_RESULT: ${{ needs.python.result }}
+          GO_RESULT: ${{ needs.go.result }}
+        run: |
+          test "$PYTHON_RESULT" = "success"
+          test "$GO_RESULT" = "success"
