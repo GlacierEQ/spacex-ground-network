@@ -1,1 +1,34 @@
-{"capabilities": ["hyper-scaling"]}
+{
+  "schema": "glaciereq.repo-capabilities.v1",
+  "repository": "GlacierEQ/spacex-ground-network",
+  "capabilities": [
+    {
+      "id": "ground-station-look-angle-and-doppler-reference",
+      "status": "IMPLEMENTED_PREVIOUS_SHA_VERIFIED",
+      "surfaces": ["src/alpha/antenna_tracker.py"]
+    },
+    {
+      "id": "link-margin-station-selection-and-handoff-state",
+      "status": "IMPLEMENTED_PREVIOUS_SHA_VERIFIED",
+      "surfaces": ["src/omega/network_manager.py"]
+    },
+    {
+      "id": "predictive-antenna-preposition-reference",
+      "status": "IMPLEMENTED_PREVIOUS_SHA_VERIFIED",
+      "surfaces": ["src/omega/predictive_handoff.py"]
+    },
+    {
+      "id": "proof-bound-local-promotion-authority",
+      "status": "IMPLEMENTED_PREVIOUS_SHA_VERIFIED",
+      "surfaces": ["src/promotion_authority.py"]
+    }
+  ],
+  "removed_unsupported_capabilities": [
+    "hyper-scaling",
+    "live-mcp-ground-network-service",
+    "ml-interference-prediction",
+    "operational-ground-station-control"
+  ],
+  "current_revision_proof_state": "PENDING_EXACT_HEAD_REVERIFICATION_AFTER_PROJECTION_REPAIR",
+  "family_position": "PENDING_DIRECT_SPACEX_FAMILY_COMPARISON"
+}
