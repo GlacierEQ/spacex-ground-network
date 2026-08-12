@@ -22,9 +22,21 @@ python - <<'PY'
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 
 artifact_dir = Path('.verification-artifacts')
+
+test_counts = []
+for idx in (1, 2):
+    text = (artifact_dir / f'unittest-pass-{idx}.log').read_text(encoding='utf-8')
+    match = re.search(r'^Ran ([1-9][0-9]*) tests? in ', text, flags=re.MULTILINE)
+    if match is None:
+        raise SystemExit(f'unittest pass {idx} did not prove a non-empty test run')
+    test_counts.append(int(match.group(1)))
+if test_counts[0] != test_counts[1]:
+    raise SystemExit('dual unittest runs executed different test counts')
+
 outputs = []
 for idx in (1, 2):
     path = artifact_dir / f'operate-pass-{idx}.json'
@@ -46,6 +58,7 @@ summary = {
     'github_sha': os.environ.get('GITHUB_SHA'),
     'compileall': True,
     'unittest_runs': 2,
+    'unittest_count_each_run': test_counts[0],
     'operate_runs': 2,
     'dual_run_equal': True,
     'operate_sha256': hashlib.sha256(
