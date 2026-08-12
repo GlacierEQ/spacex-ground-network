@@ -2,21 +2,38 @@
   "schema": "glaciereq.repo-target-contract.v1",
   "identity": {
     "repository_id": "GlacierEQ/spacex-ground-network",
-    "family": "elite-estate"
+    "family": "UNRESOLVED_SPACEX_SPECIALIST_POSITION"
+  },
+  "target": {
+    "role": "bounded ground-contact geometry, link-ranking, and predictive handoff reference specialist",
+    "required_mechanisms": [
+      "ground-station coordinate/look-angle and Doppler reference calculations",
+      "simplified link-budget based station ranking and handoff state",
+      "predictive antenna pre-position recommendation",
+      "proof-bound local promotion semantics"
+    ],
+    "required_proof": "exact-Git-SHA repository-native deterministic/adversarial verification plus projection-truth review; runtime/operate evidence only if separately executed on the exact claimed revision"
   },
   "current": {
-    "state": "PROMOTED",
+    "state": "PROJECTION_REPAIR_CANDIDATE",
     "implemented": true,
-    "tested": true,
-    "deployed": false
+    "previous_exact_sha_tested": "d5b65ecfb8d0fdd24ba033b2e4737346179c4a7e",
+    "current_changed_source_tested": false,
+    "deployed": false,
+    "canonical_family_position_resolved": false
   },
   "nonclaims": [
     "no employer affiliation",
-    "no production deployment without receipt"
+    "no production deployment without receipt",
+    "no operational antenna/radio/uplink authority",
+    "no Go, live MCP, Mastermind/APEX sidecar, or ML interference capability without implementation",
+    "no measured acquisition-time or constellation-scale performance claim"
   ],
   "donor_plan": {
     "mode": "none",
     "donors": []
   },
-  "frozen_at": "2026-08-10T04:12Z"
+  "historical_frozen_at": "2026-08-10T04:12Z",
+  "reconciled_at": "2026-08-12T20:55:00Z",
+  "next_cursor": "reverify projection-repair head exactly; after canonical push proof, bind the new canonical SHA in Helix and resolve family position"
 }
