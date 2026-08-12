@@ -1,1 +1,23 @@
-{"capabilities": ["hyper-scaling"]}
+{
+  "schema": "glaciereq.capabilities.v2",
+  "capabilities": [
+    "wgs84-lla-ecef-conversion",
+    "look-angle-and-doppler-analysis",
+    "validated-rf-link-budget",
+    "health-load-and-margin-aware-station-selection",
+    "handoff-hysteresis",
+    "deterministic-contact-series-screening",
+    "j2-kepler-earth-fixed-predictive-positioning",
+    "review-only-preposition-and-handoff-simulation",
+    "python-json-ground-network-cli",
+    "go-native-station-selection-kernel"
+  ],
+  "nonclaims": [
+    "no SpaceX affiliation",
+    "no RF transmission authority",
+    "no spacecraft command uplink",
+    "no antenna hardware actuation",
+    "no live MCP or APEX integration",
+    "no operational acquisition-time guarantee"
+  ]
+}
