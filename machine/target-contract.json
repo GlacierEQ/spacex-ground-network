@@ -1,22 +1,40 @@
 {
-  "schema": "glaciereq.repo-target-contract.v1",
-  "identity": {
-    "repository_id": "GlacierEQ/spacex-ground-network",
-    "family": "elite-estate"
-  },
+  "schema": "glaciereq.repo-target-contract.v2",
+  "repository": "GlacierEQ/spacex-ground-network",
+  "purpose": "deterministic ground-station tracking and network-planning simulation",
   "current": {
-    "state": "PROMOTED",
+    "state": "FUNCTIONAL_CANDIDATE",
     "implemented": true,
-    "tested": true,
+    "exact_head_native_ci_verified": false,
     "deployed": false
   },
-  "nonclaims": [
-    "no employer affiliation",
-    "no production deployment without receipt"
+  "required_capabilities": [
+    "wgs84-lla-ecef-conversion",
+    "look-angle-and-doppler-analysis",
+    "validated-rf-link-budget",
+    "health-load-and-margin-aware-station-selection",
+    "handoff-hysteresis",
+    "deterministic-contact-series-screening",
+    "j2-kepler-earth-fixed-predictive-positioning",
+    "review-only-preposition-and-handoff-simulation",
+    "python-json-ground-network-cli",
+    "go-native-station-selection-kernel"
   ],
-  "donor_plan": {
-    "mode": "none",
-    "donors": []
-  },
-  "frozen_at": "2026-08-10T04:12Z"
+  "promotion_requires": [
+    "Python 3.11 functional proof",
+    "Python 3.12 functional proof",
+    "Python 3.13 functional proof",
+    "Go vet",
+    "Go race-tested unit proof",
+    "Go executable smoke",
+    "required-functional-proof"
+  ],
+  "nonclaims": [
+    "no SpaceX affiliation",
+    "no RF transmission authority",
+    "no spacecraft command uplink",
+    "no antenna hardware actuation",
+    "no live MCP or APEX integration",
+    "no operational acquisition-time guarantee"
+  ]
 }

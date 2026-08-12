@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "glaciereq-ground-network"
+version = "1.0.0"
+description = "Deterministic ground-station tracking and network planning simulation"
+requires-python = ">=3.11"
+license = { text = "LicenseRef-GlacierEQ-Proprietary-1.1" }
+authors = [{ name = "GlacierEQ" }]
+
+[project.scripts]
+ground-network = "ground_network:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["ground_network", "ground_net", "promotion_authority"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = true
+include = ["alpha*", "omega*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
