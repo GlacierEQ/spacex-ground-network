@@ -27,6 +27,10 @@
     "GO_NATIVE": "REQUIRES_CURRENT_HEAD_CI",
     "REQUIRED_FUNCTIONAL_PROOF": "REQUIRES_CURRENT_HEAD_CI"
   },
+  "promotion_authority": {
+    "status": "RETIRED_KEYLESS",
+    "reason": "Repository progression is not gated by a source-default or externally supplied promotion secret."
+  },
   "nonclaims": [
     "no SpaceX affiliation",
     "no RF transmission authority",
